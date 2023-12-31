@@ -3,40 +3,41 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import Gab from "./GAB/Gab";
 import logo from "./logo.png";
+import Login from "./Authentication/Login";
 
 function App() {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
-      <a class="navbar-brand" href="#">
-    <img src={logo} width="30" height="30" class="d-inline-block align-top" alt=""/>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
+      <a className="navbar-brand" href="#">
+    <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
     Ensas Bank
       </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-                <a class="nav-link" >Home</a>
+    <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav me-auto">
+            <li className="nav-item">
+                <a className="nav-link" >Home</a>
             </li>
-            <li class="nav-item">
-                <Link to="/gab" class="nav-link"  >GAB</Link>
+            <li className="nav-item">
+                <Link to="/gab" className="nav-link"  >GAB</Link>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" >Products</a>
+            <li className="nav-item">
+                <Link to={"/login"} className="nav-link" >Login</Link>
             </li>
         </ul>
-        <ul class="navbar">
+        <ul className="navbar">
 
-            <div class="dropdown">
-                <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <div className="dropdown">
+                <button className="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     [Username]
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a class="dropdown-item" href="#">Login</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                    <li><a class="dropdown-item" href="#">Profil</a></li>
+                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a className="dropdown-item" href="#">Login</a></li>
+                    <li><a className="dropdown-item" href="#">Logout</a></li>
+                    <li><a className="dropdown-item" href="#">Profil</a></li>
                 </ul>
             </div>
         </ul>
@@ -45,6 +46,7 @@ function App() {
 </nav>
       <Routes>
           <Route path="gab" element={<Gab/>}/>
+          <Route path="login" element={<Login/>}/>
       </Routes>
     </div>
   )
