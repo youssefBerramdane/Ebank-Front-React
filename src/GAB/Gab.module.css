@@ -1,0 +1,29 @@
+.page{
+    background-color: black;
+    width: 100vw;
+    height: 83vh; 
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.gabmachine {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+}
+
+.gabscreen {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.numberpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+.gabbuttons {
+    text-align: center;
+}
