@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle'
 import React, { useState } from 'react'
 import style from './Gab.module.css';
 export default function Gab() {
