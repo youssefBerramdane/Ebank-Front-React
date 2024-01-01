@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Gab from "./GAB/Gab";
 import logo from "./logo.png";
 import Login from "./Authentication/Login";
+import Servir from "./Agent/ServireEspece/Servir";
 
 function App() {
   return (
@@ -27,6 +28,16 @@ function App() {
             <li className="nav-item">
                 <Link to={"/login"} className="nav-link" >Login</Link>
             </li>
+            <li><div className="dropdown">
+                <button className="btn  dropdown-toggle" type="button" id="Agent" data-bs-toggle="dropdown" aria-expanded="false">
+                    Agent
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="Agent">
+                    <li><Link className="dropdown-item" href="/agent/servir">Servir</Link></li>
+                    <li><a className="dropdown-item" href="#">Logout</a></li>
+                    <li><a className="dropdown-item" href="#">Profil</a></li>
+                </ul>
+            </div></li>
         </ul>
         <ul className="navbar">
 
@@ -47,6 +58,7 @@ function App() {
       <Routes>
           <Route path="gab" element={<Gab/>}/>
           <Route path="login" element={<Login/>}/>
+          <Route path="agent/servir" element ={<Servir/>}/>
       </Routes>
     </div>
   )

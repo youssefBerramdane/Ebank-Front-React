@@ -1,0 +1,20 @@
+.page{
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+button[disabled]{
+    cursor:not-allowed;
+}
+.spinner-grow{
+    margin:-10px auto 50px auto;  
+}
+.kyc input{
+    width: 200px;
+}
+.kyc div{
+    margin-top: 5px;
+}
