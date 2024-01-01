@@ -1,66 +1,108 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import './App.css';
 import Gab from "./GAB/Gab";
-import logo from "./logo.png";
 import Login from "./Authentication/Login";
 import Servir from "./Agent/ServireEspece/Servir";
+import Home from "./BackOffice/pages/BackOfficeDashboard";
+import { useState } from "react";
+import Header from "./BackOffice/components/Header";
+import Sidebar from "./BackOffice/components/Sidebar";
+import TransferConsultation from "./BackOffice/pages/TransferConsultation";
+import NotificationResend from "./BackOffice/pages/NotificationResend";
+import BlockTransfer from './BackOffice/pages/block';
+import UnblockTransfer from './BackOffice/pages/UnblockTransfer';
+import SetTransferLimit from './BackOffice/pages/PlafondSettings';
+import NavbarGab from './layout/NavbarGab';
+
 
 function App() {
+    const [openSidebarToggle, setOpenSidebarToggle] = useState(false);
+
+  const OpenSidebar = () => {
+    setOpenSidebarToggle(!openSidebarToggle);
+  };
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light p-3">
-      <a className="navbar-brand" href="#">
-    <img src={logo} width="30" height="30" className="d-inline-block align-top" alt=""/>
-    Ensas Bank
-      </a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-                <a className="nav-link" >Home</a>
-            </li>
-            <li className="nav-item">
-                <Link to="/gab" className="nav-link"  >GAB</Link>
-            </li>
-            <li className="nav-item">
-                <Link to={"/login"} className="nav-link" >Login</Link>
-            </li>
-            <li><div className="dropdown">
-                <button className="btn  dropdown-toggle" type="button" id="Agent" data-bs-toggle="dropdown" aria-expanded="false">
-                    Agent
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="Agent">
-                    <li><Link className="dropdown-item" href="/agent/servir">Servir</Link></li>
-                    <li><a className="dropdown-item" href="#">Logout</a></li>
-                    <li><a className="dropdown-item" href="#">Profil</a></li>
-                </ul>
-            </div></li>
-        </ul>
-        <ul className="navbar">
-
-            <div className="dropdown">
-                <button className="btn  dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    [Username]
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <li><a className="dropdown-item" href="#">Login</a></li>
-                    <li><a className="dropdown-item" href="#">Logout</a></li>
-                    <li><a className="dropdown-item" href="#">Profil</a></li>
-                </ul>
-            </div>
-        </ul>
-    </div>
-
-</nav>
+   
+     <div>
       <Routes>
-          <Route path="gab" element={<Gab/>}/>
-          <Route path="login" element={<Login/>}/>
-          <Route path="agent/servir" element ={<Servir/>}/>
+        <Route path='/' element={ <>
+            <NavbarGab />
+            <Login />
+            </>
+            }/>
+          <Route path="/gab" element={
+            <>
+            <NavbarGab />
+            <Gab/>
+            </>
+            
+          }/>
+          <Route path="login" element={
+          <>
+          <NavbarGab />
+          <Login/>
+          </>
+          
+          
+          }/>
+          <Route path="agent/servir" element ={
+           <>
+           <NavbarGab />
+           <Servir/>
+           </>
+            
+          }/>
+
+          <Route path="/backoffice" element={
+             <div className='grid-container'>
+              <Header OpenSidebar={OpenSidebar} />
+              <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+              <Home />
+            </div>
+          } />
+          <Route path="/transfers" element={
+             <div className='grid-container'>
+                 <Header OpenSidebar={OpenSidebar} />
+              <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+              <TransferConsultation />
+            </div>
+          } />
+          <Route path="/notifications" element={
+             <div className='grid-container'>
+                 <Header OpenSidebar={OpenSidebar} />
+              <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+              <NotificationResend />
+            </div>
+          } />
+
+         <Route path="/block" element={
+             <div className='grid-container'>
+                 <Header OpenSidebar={OpenSidebar} />
+              <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+              <BlockTransfer />
+            </div>
+          } />
+          <Route path="/unblock" element={
+             <div className='grid-container'>
+                 <Header OpenSidebar={OpenSidebar} />
+              <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+              <UnblockTransfer />
+            </div>
+          } />
+
+          <Route path="/limit-settings" element={
+             <div className='grid-container'>
+                 <Header OpenSidebar={OpenSidebar} />
+              <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+              <SetTransferLimit />
+            </div>
+          } />
       </Routes>
+   
     </div>
+  
+    
   )
 }
 
